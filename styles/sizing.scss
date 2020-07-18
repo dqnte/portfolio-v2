@@ -1,0 +1,165 @@
+html,
+body,
+main {
+  padding: 0;
+  margin: 0;
+  width: 100vw;
+  height: 100vh;
+
+  scroll-behavior: smooth;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+#intro {
+  padding: 50px 30px;
+  height: 100vh;
+  position: relative;
+
+  .links {
+    position: absolute;
+    bottom: 50px;
+    padding-bottom: 50px;
+
+    svg {
+      margin: 0px 5px;
+      width: 30px;
+    }
+  }
+
+  .scroll-down {
+    position: absolute;
+
+    bottom: 15px;
+    left: calc(50% - 30px + 15px);
+
+    margin: 0px 5px;
+    width: 30px;
+
+    // animation-duration: 1.5s;
+    // animation-iteration-count: infinite;
+    // animation-name: bounce;
+    // animation-timing-function: ease;
+  }
+}
+
+@keyframes bounce {
+  0% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
+
+#projects {
+  margin: 24px;
+  height: 100vh;
+
+  position: relative;
+
+  .project-display {
+    position: absolute;
+    background: #fff;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: -1;
+    height: 90vh;
+
+    opacity: 0;
+
+    transition: opacity 0.4s linear, z-index 0.6s step-end,
+      visibility 0.6s step-end;
+
+    a {
+      position: relative;
+      top: 10px;
+
+      margin-top: 10px;
+      opacity: 0;
+      visibility: hidden;
+    }
+
+    img {
+      width: 100%;
+    }
+  }
+
+  .project-display.visible {
+    opacity: 1;
+    visibility: visible;
+    z-index: 2;
+    transition: opacity 0.2s linear, z-index 0.2s step-start;
+
+    a {
+      opacity: 1;
+      visibility: visible;
+      transition: opacity 0.2s linear 0.6s;
+    }
+  }
+
+  .project {
+    padding-top: 80px;
+    opacity: 0;
+
+    img {
+      border-radius: 10px;
+      box-shadow: 0px 2px 3px #26262654;
+    }
+  }
+
+  .project.photography {
+    img {
+      border-radius: unset;
+      box-shadow: none;
+    }
+  }
+
+  .project.visible {
+    opacity: 1;
+    transition: opacity 0.2s;
+  }
+
+  .name {
+    position: absolute;
+    display: flex;
+    justify-content: space-between;
+
+    width: 100%;
+
+    transition-delay: 0s, 0.2s;
+
+    h2 {
+      margin: 0;
+    }
+
+    button {
+      width: 30px;
+      position: relative;
+      top: 4px;
+      background: transparent;
+      border: none;
+    }
+  }
+
+  .name.visible {
+    z-index: 3;
+
+    top: 20px !important;
+
+    transition: top 0.5s;
+  }
+}
+
+div.button {
+  position: relative;
+  width: fit-content;
+  left: -10px;
+  padding: 10px;
+}

@@ -64,6 +64,7 @@ a:visited {
 
   .name {
     cursor: pointer;
+    background: rgba(255, 255, 255, 0.975);
 
     button {
       color: $BLUE;
@@ -71,12 +72,25 @@ a:visited {
     }
   }
 
-  .name.visible {
-    border-bottom: 3px solid $BLUE;
+  .name:after {
+    background: $BLUE;
+    bottom: 0;
+    left: 0;
+    position: absolute;
+    content: '';
+    width: 0;
+    height: 2px;
+  }
 
+  .name.visible {
     button {
       visibility: visible;
     }
+  }
+
+  .name.visible:after {
+    transition: width 350ms ease-out 400ms;
+    width: 100%;
   }
 
   .project {

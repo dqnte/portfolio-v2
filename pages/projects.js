@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faTimes } from '@fortawesome/free-solid-svg-icons';
+import CloseIcon from '@material-ui/icons/Close';
 
 import Dopaliscious from './dopaliscious';
 import Coreo from './coreo';
@@ -10,9 +10,20 @@ import Photography from './photography';
 
 export default function Projects() {
   const [project, setProject] = useState(0);
+  const [unmounting, unmountProject] = useState(false);
 
   const handleClick = id => {
-    setProject(id);
+    window.scrollTo(0, window.innerHeight);
+
+    if (id === 0) {
+      unmountProject(true);
+      setTimeout(() => {
+        setProject(0);
+        unmountProject(false);
+      }, 300);
+    } else {
+      setProject(id);
+    }
   };
 
   const projectList = [
@@ -30,7 +41,10 @@ export default function Projects() {
   ];
 
   return (
-    <div id="projects">
+    <div
+      id="projects"
+      className={unmounting ? 'unmounting' : project === 0 ? 'show-all' : ''}
+    >
       {projectList.map(item => (
         <div
           id={item.id}
@@ -40,7 +54,7 @@ export default function Projects() {
         >
           <h2 onClick={() => handleClick(item.id)}>{item.title}</h2>
           <button type="button" onClick={() => handleClick(0)}>
-            <FontAwesomeIcon icon={faTimes} />
+            <CloseIcon />
           </button>
         </div>
       ))}

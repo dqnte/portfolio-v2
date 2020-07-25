@@ -6,7 +6,6 @@ main {
   padding: 0;
   margin: 0;
   width: 100vw;
-  height: 100vh;
 
   scroll-behavior: smooth;
 }
@@ -15,156 +14,186 @@ main {
   box-sizing: border-box;
 }
 
-#intro {
-  z-index: 3;
-  padding: 50px $MOBILE_MARGIN;
-  height: 100vh;
-  position: relative;
+main {
+  overflow: hidden;
+  height: 100%;
+}
 
-  .links {
-    position: absolute;
-    bottom: 50px;
-    padding-bottom: 50px;
+#header {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  padding: 30px 0px;
 
-    svg {
-      margin: 0px 5px;
-      width: 30px;
+  transform: scale(1);
+  height: 25vh;
+
+  transition: all 300ms;
+
+  .name {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    h1 {
+      margin: -10px;
     }
   }
 
-  .scroll-down {
-    position: absolute;
+  .tabs {
+    display: flex;
+    justify-content: space-around;
+    width: 30vw;
+    margin: 30px;
 
-    bottom: 15px;
-    left: calc(50% - 30px + 15px);
+    h2 {
+      margin: 10px;
+      position: relative;
 
-    margin: 0px 5px;
-    width: 30px;
+      span {
+        background: #000;
+        position: absolute;
+        bottom: 0;
+        content: '';
+        height: 4px;
+
+        transition: width 300ms;
+      }
+    }
+
+    h2.underline-left span {
+      width: 0;
+      left: 0;
+    }
+
+    h2.underline-right span {
+      width: 0;
+      right: 0;
+    }
+
+    h2.underline span {
+      width: 100%;
+      transition: width 300ms;
+    }
   }
 }
 
+#header.expand {
+  height: 80vh;
+  transform: scale(1.2);
+}
+
 #projects {
-  position: relative;
-  height: 100vh;
-  margin-top: $MOBILE_MARGIN;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+  column-gap: 2px;
+  row-gap: 2px;
 
-  .project-display {
-    position: absolute;
-    background: #fff;
-    top: 0;
-    left: 0;
-    height: 90vh;
-    opacity: 0;
+  .project-button {
+    width: 100%;
+    position: relative;
+    display: flex;
+    align-items: center;
+    overflow: hidden;
 
-    transition: opacity 400ms linear, z-index 0.6s step-end,
-      visibility 0.6s step-end;
+    .description {
+      position: absolute;
+      top: 0;
+      width: 75%;
+      height: 100%;
+      padding: 10px 30px;
+      z-index: 2;
 
-    a {
-      position: relative;
-      top: 10px;
+      h3 {
+        position: relative;
+        width: max-content;
+      }
 
-      margin-top: 10px;
-      opacity: 0;
+      h3 span {
+        position: absolute;
+        z-index: -1;
+        left: 10px;
+        bottom: -5%;
+        content: '';
+        background: #000;
+        height: 60%;
+        width: 0;
+      }
+    }
+
+    .stack {
+      bottom: 0;
+      position: absolute;
+      width: 100%;
+      height: 100%;
+
+      padding: 10px 30px;
       visibility: hidden;
+      z-index: 2;
     }
 
     img {
       width: 100%;
+      z-index: 1;
+      transform: scale(1);
+      transition: transform 200ms ease-out;
     }
   }
 
-  .project-display.visible {
-    padding: 0 $MOBILE_MARGIN;
-    width: 100%;
-    opacity: 1;
-    visibility: visible;
-    transition: opacity 0.2s linear, z-index 0.2s step-start;
-
-    a {
-      opacity: 1;
+  .project-button:hover {
+    .stack {
       visibility: visible;
-      transition: opacity 0.2s linear 0.6s;
     }
-  }
-
-  .project {
-    padding-top: 80px;
-    opacity: 0;
 
     img {
-      border-radius: 10px;
-      box-shadow: 0px 2px 3px #26262654;
+      transform: scale(1.1);
+      transition: transform 300ms ease-out;
+    }
+
+    .description h3 span {
+      width: 100%;
+
+      transition: width 200ms ease-out;
     }
   }
+}
 
-  .project.photography {
-    img {
-      border-radius: unset;
-      box-shadow: none;
-    }
-  }
+#photography {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
 
-  .project.visible {
-    opacity: 1;
-    transition: opacity 0.2s;
-  }
-
-  .name {
-    position: absolute;
-    display: flex;
-    justify-content: space-between;
-    padding: 15px $MOBILE_MARGIN 7px $MOBILE_MARGIN;
+  img {
     width: 100%;
-    opacity: 0;
-
-    transition-delay: 0s, 0.2s;
-
-    h2 {
-      margin: 0;
-    }
-
-    button {
-      width: 30px;
-      position: relative;
-      top: 4px;
-      background: transparent;
-      border: none;
-    }
-  }
-
-  .name.visible {
-    z-index: 3;
-    opacity: 1;
-    position: sticky;
-    top: 0 !important;
-
-    transition: top 0.5s;
   }
 }
 
-#projects.show-all {
-  .name {
-    opacity: 1;
+#viewer {
+  width: 100vw;
+  height: 100vh;
+  position: fixed;
+  top: 100vh;
+  left: 0;
 
-    transition: opacity 300ms linear 300ms;
+  z-index: 5;
+
+  transition: top 300ms ease-out;
+
+  #viewer-header {
+    position: absolute;
+    padding: 20px;
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
   }
 }
 
-#projects.unmounting {
-  .name.visible {
-    opacity: 0;
-    transition: opacity 300ms linear;
-  }
-
-  .project-display {
-    opacity: 0;
-    transition: opacity 300ms linear;
-  }
+#viewer.unmounting {
+  top: 100vh;
+  transition: top 300ms ease-in;
 }
 
-div.button {
-  position: relative;
-  width: fit-content;
-  left: -10px;
-  padding: 10px;
+#viewer.show {
+  top: 0;
+
+  transition: top 300ms ease-in-out 300ms;
 }

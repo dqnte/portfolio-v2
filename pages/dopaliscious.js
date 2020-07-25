@@ -7,9 +7,5 @@ export default function Dopaliscious() {
     setTimeout(() => setDisplay(true), 600);
   }, []);
 
-  return (
-    <div className={`project ${onDisplay ? 'visible' : ''}`}>
-      <img src="dope-pink.jpg" />
-    </div>
-  );
+  return <div className={`project ${onDisplay ? 'visible' : ''}`}></div>;
 }

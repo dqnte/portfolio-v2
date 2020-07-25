@@ -1,10 +1,20 @@
 import Head from 'next/head';
-import React, { useRef, useEffect, useState } from 'react';
+import React from 'react';
 
 import '../styles/sizing.scss';
 import '../styles/text.scss';
 
 import Projects from './projects';
+import Header from './header';
+import Viewer from './viewer';
+import About from './about';
+import Contact from './contact';
+
+import Dopaliscious from './dopaliscious';
+import Coreo from './coreo';
+import Nanas from './nanas';
+import CityHall from './cityHall';
+import Photography from './photography';
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
@@ -13,78 +23,112 @@ import {
   faGithub,
 } from '@fortawesome/free-brands-svg-icons';
 
-import { faChevronDown } from '@fortawesome/free-solid-svg-icons';
+export default class Home extends React.Component {
+  constructor() {
+    super();
 
-export default function Home() {
-  const page1 = useRef(null);
-  const page2 = useRef(null);
+    this.state = { selectedView: null, selectedPage: null };
+    this.selectView = this.selectView.bind(this);
+    this.selectPage = this.selectPage.bind(this);
 
-  const [isLoaded, load] = useState(false);
-
-  const handleClick = () => {
-    window.scrollTo(0, window.innerHeight);
-  };
-
-  useEffect(() => {
-    load(true);
-  }, []);
-
-  return (
-    <div className="container">
-      <Head>
-        <title>Dante Tobar</title>
-        <link rel="icon" href="/favicon.ico" />
-        <link
-          href="https://fonts.googleapis.com/css2?family=Manrope:wght@200;300;400;500;600;700;800&family=Roboto+Mono:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600;1,700&display=swap"
-          rel="stylesheet"
-        />
-      </Head>
-
-      <main>
-        <div id="intro" className={isLoaded ? '' : 'preload'}>
-          <h1>dante tobar</h1>
-          <h3 style={{ transitionDelay: '80ms' }}>software engineer</h3>
-          <p style={{ transitionDelay: '160ms' }}>
-            i have experience ranging from full-stack web development to
-            computational physics
+    this.projectList = [
+      {
+        id: 1,
+        title: 'dopaliscious',
+        component: <Dopaliscious />,
+        color: '#fff',
+        accent: '#5E00DE',
+        backColor: '#e42954',
+        buttonUrl: 'dope-button.jpg',
+        description: (
+          <p>
+            <span>an online radio station</span>
           </p>
-          <p style={{ transitionDelay: '240ms' }}>
-            i also take pictures of my friends and of bands in the los angeles
-            area
-          </p>
+        ),
+        stack: (
+          <React.Fragment>
+            <p>React / Node.js / MongoDb</p>
+          </React.Fragment>
+        ),
+      },
+      {
+        id: 2,
+        title: 'los angeles city hall',
+        component: <CityHall />,
+        color: '#fff',
+        accent: '#FFDB00',
+        backColor: '#7fb6ff',
+        buttonUrl: 'cityhall-button copy.jpg',
+        description: <p>databases for admin and accounting</p>,
+        stack: (
+          <React.Fragment>
+            <p>VBA / SQL Server</p>
+          </React.Fragment>
+        ),
+      },
+      // { id: 3, title: 'coreo', component: <Coreo /> },
+      {
+        id: 4,
+        title: 'nanas',
+        component: <Nanas />,
+        color: '#000',
+        accent: '#16693b',
+        backColor: '#fff',
+        buttonUrl: 'nanas-button.jpg',
+        description: <p>an e-commerce project built with an Agile team</p>,
+        stack: (
+          <React.Fragment>
+            <p>React / Node.js / PostgreSQL</p>
+          </React.Fragment>
+        ),
+      },
+      // { id: 5, title: 'compression' },
+      // { id: 6, title: 'stock picker' },
+      // { id: 7, title: 'photography', component: <Photography /> },
+    ];
+  }
 
-          <div className="links" style={{ transitionDelay: '240ms' }}>
-            <a
-              href="https://www.instagram.com/eggward_norton/"
-              rel="noopener noreferrer"
-              target="_blank"
-            >
-              <FontAwesomeIcon icon={faInstagram} />
-            </a>
-            <a
-              href="https://www.linkedin.com/in/dante-m-tobar/"
-              rel="noopener noreferrer"
-              target="_blank"
-            >
-              <FontAwesomeIcon icon={faLinkedin} />
-            </a>
-            <a
-              href="http://github.com/tuna-melt"
-              rel="noopener noreferrer"
-              target="_blank"
-            >
-              <FontAwesomeIcon icon={faGithub} />
-            </a>
-          </div>
-          <FontAwesomeIcon
-            icon={faChevronDown}
-            className="scroll-down"
-            onClick={handleClick}
-            style={{ transitionDelay: '240ms' }}
+  selectView(view) {
+    this.setState({ selectedView: view });
+  }
+
+  selectPage(page) {
+    this.setState({ selectedPage: page });
+  }
+
+  render() {
+    const { selectedPage } = this.state;
+    return (
+      <div className="container">
+        <Head>
+          <title>Dante Tobar</title>
+          <link rel="icon" href="/favicon.ico" />
+          <link
+            href="https://fonts.googleapis.com/css2?family=Manrope:wght@200;300;400;500;600;700;800&family=Roboto+Mono:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600;1,700&display=swap"
+            rel="stylesheet"
           />
-        </div>
-        <Projects />
-      </main>
-    </div>
-  );
+        </Head>
+
+        <main>
+          <Viewer view={this.state.selectedView} selectView={this.selectView} />
+
+          <Header
+            hide={this.state.selectedView !== null}
+            selectPage={this.selectPage}
+            selectedPage={this.state.selectedPage}
+          />
+          {selectedPage === 1 && (
+            <Projects
+              projectList={this.projectList}
+              selectView={this.selectView}
+              hide={this.state.selectedView !== null}
+            />
+          )}
+          {selectedPage === 2 && <Photography />}
+          {selectedPage === 3 && <About />}
+          {selectedPage === 4 && <Contact />}
+        </main>
+      </div>
+    );
+  }
 }

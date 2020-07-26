@@ -19,7 +19,7 @@ main {
   height: 100%;
 }
 
-#header {
+#desktop-header {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -78,9 +78,80 @@ main {
   }
 }
 
-#header.expand {
+#desktop-header.expand {
   height: 80vh;
   transform: scale(1.2);
+}
+
+#mobile-header {
+  display: flex;
+  justify-content: space-between;
+  padding: 5px 20px;
+}
+
+#menu {
+  z-index: 10;
+  visibility: hidden;
+  background: #fff;
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+
+  .close {
+    position: absolute;
+    right: 0;
+    top: 0;
+
+    padding: 20px 23px 20px 20px;
+  }
+}
+
+#menu.show {
+  visibility: visible;
+}
+
+#menu.unmounting {
+  opacity: 0;
+  visibility: visible;
+
+  transition: opacity 200ms;
+}
+
+#mobile-header.expand {
+  height: 90vh;
+  flex-direction: column;
+  justify-content: center;
+
+  h2,
+  button {
+    transform: scale(1.3);
+  }
+}
+
+@media only screen and (max-width: 699px) {
+  #desktop-header {
+    height: 0 !important;
+    padding: 0 !important;
+    visibility: hidden;
+  }
+}
+
+@media only screen and (min-width: 700px) {
+  #mobile-header {
+    visibility: hidden;
+    height: 0 !important;
+    padding: 0 !important;
+
+    #menu {
+      visibility: hidden !important;
+    }
+  }
 }
 
 #projects {
@@ -161,6 +232,8 @@ main {
 #photography {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  row-gap: 2px;
+  column-gap: 2px;
 
   img {
     width: 100%;

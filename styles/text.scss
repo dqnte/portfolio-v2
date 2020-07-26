@@ -16,7 +16,7 @@ a:visited {
   color: #fff;
 }
 
-#header {
+.header {
   .name {
     h1 {
       font-weight: bold;
@@ -31,6 +31,11 @@ a:visited {
       cursor: pointer;
     }
   }
+}
+
+#mobile-header,
+#menu {
+  text-align: center;
 }
 
 #projects {
@@ -61,24 +66,21 @@ a:visited {
   transition: opacity 300ms;
 }
 
-#viewer {
-  #viewer-header {
-    button {
-      cursor: pointer;
-      background: transparent;
-      border: none;
+.icon-button {
+  cursor: pointer;
+  background: transparent;
+  border: none;
+}
 
-      transition: all 100ms;
-    }
+.icon-button {
+  outline: none;
+}
 
-    button:hover {
-      transform: scale(1.2);
+.close {
+  transition: all 100ms;
+}
 
-      transition: all 200ms;
-    }
-
-    button:focus {
-      outline: none;
-    }
-  }
+.close:hover {
+  transform: scale(1.2);
+  transition: all 200ms;
 }

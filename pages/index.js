@@ -9,6 +9,8 @@ import Header from './header';
 import Viewer from './viewer';
 import About from './about';
 import Contact from './contact';
+import Compression from './compression';
+import Stockpicker from './stockpicker';
 
 import Dopaliscious from './dopaliscious';
 import Coreo from './coreo';
@@ -66,14 +68,13 @@ export default class Home extends React.Component {
           </React.Fragment>
         ),
       },
-      // { id: 3, title: 'coreo', component: <Coreo /> },
       {
-        id: 4,
+        id: 3,
         title: 'nanas',
         component: <Nanas />,
         color: '#000',
         accent: '#16693b',
-        backColor: '#fff',
+        backColor: '#fee252',
         buttonUrl: 'nanas-button.jpg',
         description: <p>an e-commerce project built with an Agile team</p>,
         stack: (
@@ -82,9 +83,36 @@ export default class Home extends React.Component {
           </React.Fragment>
         ),
       },
-      // { id: 5, title: 'compression' },
-      // { id: 6, title: 'stock picker' },
-      // { id: 7, title: 'photography', component: <Photography /> },
+      {
+        id: 4,
+        title: 'coreo',
+        component: <Coreo />,
+        color: '#000',
+        accent: 'grey',
+        backColor: '#fff',
+        buttonUrl: 'coreo-button.jpg',
+        description: (
+          <p>coreography assistance with a machine learning twist</p>
+        ),
+      },
+      {
+        id: 5,
+        title: 'compression',
+        component: <Compression />,
+        color: '#fff',
+        accent: '#3c04a2',
+        buttonUrl: 'compression-button.jpg',
+        description: <p>a machine learning compression applet</p>,
+      },
+      {
+        id: 6,
+        title: 'stock picker',
+        component: <Stockpicker />,
+        color: '#000',
+        accent: 'green',
+        buttonUrl: 'stockpicker-button.jpg',
+        description: <p>a simple stock picking app</p>,
+      },
     ];
   }
 

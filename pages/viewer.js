@@ -33,7 +33,12 @@ export default function Viewer(props) {
       className={props.view ? (unmounting ? 'unmounting' : 'show') : ''}
     >
       <div id="viewer-header">
-        <button type="button" style={headerSyles} onClick={unMountView}>
+        <button
+          type="button"
+          className="icon-button close"
+          style={headerSyles}
+          onClick={unMountView}
+        >
           <CloseIcon style={{ fontSize: 40 }} />
         </button>
       </div>

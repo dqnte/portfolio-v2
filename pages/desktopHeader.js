@@ -30,34 +30,40 @@ export default function DesktopHeader(props) {
   return (
     <div
       id="desktop-header"
-      className={`header ${mounting || props.hide ? 'hide' : 'show'} ${
-        props.selectedPage ? '' : 'expand'
-      }`}
+      className={`header text-grid ${
+        mounting || props.hide ? 'hide' : 'show'
+      } ${props.selectedPage ? '' : 'expand'}`}
     >
-      <div className="tabs">
-        <h2 className={getClass(1)} onClick={() => props.selectPage(1)}>
-          projects
-          <span />
-        </h2>
-        <h2 className={getClass(2)} onClick={() => props.selectPage(2)}>
-          photography
-          <span />
-        </h2>
-      </div>
+      <h2
+        className={getClass(1) + ' right'}
+        onClick={() => props.selectPage(1)}
+      >
+        projects
+        <span />
+      </h2>
+      <h2
+        className={getClass(2) + ' center'}
+        onClick={() => props.selectPage(2)}
+      >
+        photography
+        <span />
+      </h2>
+
       <div className="name">
         <h1>dante</h1>
         <h1>tobar</h1>
       </div>
-      <div className="tabs">
-        <h2 className={getClass(3)} onClick={() => props.selectPage(3)}>
-          about
-          <span />
-        </h2>
-        <h2 className={getClass(4)} onClick={() => props.selectPage(4)}>
-          contact
-          <span />
-        </h2>
-      </div>
+      <h2
+        className={getClass(3) + ' center'}
+        onClick={() => props.selectPage(3)}
+      >
+        experience
+        <span />
+      </h2>
+      <h2 className={getClass(4) + ' left'} onClick={() => props.selectPage(4)}>
+        about
+        <span />
+      </h2>
     </div>
   );
 }

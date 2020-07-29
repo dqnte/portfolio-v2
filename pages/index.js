@@ -8,7 +8,7 @@ import Projects from './projects';
 import Header from './header';
 import Viewer from './viewer';
 import About from './about';
-import Contact from './contact';
+import Experience from './experience';
 import Compression from './compression';
 import Stockpicker from './stockpicker';
 
@@ -17,13 +17,6 @@ import Coreo from './coreo';
 import Nanas from './nanas';
 import CityHall from './cityHall';
 import Photography from './photography';
-
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import {
-  faInstagram,
-  faLinkedin,
-  faGithub,
-} from '@fortawesome/free-brands-svg-icons';
 
 export default class Home extends React.Component {
   constructor() {
@@ -153,8 +146,8 @@ export default class Home extends React.Component {
             />
           )}
           {selectedPage === 2 && <Photography />}
-          {selectedPage === 3 && <About />}
-          {selectedPage === 4 && <Contact />}
+          {selectedPage === 3 && <Experience />}
+          {selectedPage === 4 && <About />}
         </main>
       </div>
     );

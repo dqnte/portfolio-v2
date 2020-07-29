@@ -66,7 +66,7 @@ export default function MobileHeader(props) {
             openPage(3);
           }}
         >
-          about
+          experience
           <span />
         </h1>
         <h1
@@ -74,7 +74,7 @@ export default function MobileHeader(props) {
             openPage(4);
           }}
         >
-          contact
+          about
           <span />
         </h1>
       </div>

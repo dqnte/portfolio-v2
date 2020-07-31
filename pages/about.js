@@ -26,6 +26,10 @@ export default function About() {
       </div>
       <div className="link">
         <h3 className="title">contact</h3>
+        <div className="email">dante.m.tobar@gmail.com</div>
+      </div>
+      <div className="link">
+        <h3 className="title">social</h3>
         <div className="social">
           <a href="https://www.instagram.com/eggward_norton/">
             <FontAwesomeIcon icon={faInstagram} />
@@ -37,10 +41,6 @@ export default function About() {
             <FontAwesomeIcon icon={faGithub} />
           </a>
         </div>
-      </div>
-      <div className="link">
-        <h3 className="title">e-mail</h3>
-        <div className="email">dante.m.tobar@gmail.com</div>
       </div>
     </div>
   );

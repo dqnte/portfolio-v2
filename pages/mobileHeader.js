@@ -22,7 +22,7 @@ export default function MobileHeader(props) {
       <div
         id="mobile-header"
         className={`${props.selectedPage ? '' : 'expand'} ${
-          showMenu ? 'hide' : 'show'
+          showMenu || props.hide ? 'hide' : 'show'
         } header`}
       >
         <h2>dante tobar</h2>

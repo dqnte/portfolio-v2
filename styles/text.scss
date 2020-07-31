@@ -39,6 +39,10 @@ a:visited {
   text-align: center;
 }
 
+#menu h1 {
+  cursor: pointer;
+}
+
 #projects {
   .project-button {
     cursor: pointer;
@@ -65,12 +69,12 @@ a:visited {
 
 .show {
   opacity: 1;
-  transition: opacity 300ms;
+  transition: all 300ms;
 }
 
 .hide {
   opacity: 0;
-  transition: opacity 300ms;
+  transition: all 300ms;
 }
 
 .icon-button {
